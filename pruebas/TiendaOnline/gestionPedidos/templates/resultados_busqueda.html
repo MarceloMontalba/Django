@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Estás Buscando: <strong>{{query}}</strong></p>
+    {% if articulos %}
+        <p>Articulos Encontrados: {{articulos|length}} articulos.</p>
+        <ul>
+            {% for articulo in articulos%}
+                <li>{{articulo.nombre}}</li>
+                <li>{{articulo.precio}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se han encontrado datos relacionados.</p>
+    {% endif %}
+</body>
+</html>

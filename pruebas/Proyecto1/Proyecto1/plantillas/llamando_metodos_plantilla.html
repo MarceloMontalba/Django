@@ -1,0 +1,31 @@
+<html>
+    <body>
+    
+    
+        {# Esta es una forma de comentar en una sola linea #}
+        {% comment %}
+            Esta es la forma de comentar en
+            varias lineas
+        {% endcomment%}
+        
+        {% if nombre_persona == "Marcelo" %}
+            <p>{{nombre_persona}} es un loquillo</p>
+        {% else %}
+            <p> {{nombre_persona}} es fome </p> 
+        {% endif %}
+    
+        <h3>Temas a Buscar:</h3>
+        <p>
+            <ul>
+            {% if temas %}
+                {% for tema in temas%}
+                    <li>{{tema|upper}}</li>
+                {% endfor %}
+            {% else %}
+                <p>No hay elementos que mostrar</p>
+            {% endif %}
+            </ul>
+            
+        </p>
+    </body>
+</html>
