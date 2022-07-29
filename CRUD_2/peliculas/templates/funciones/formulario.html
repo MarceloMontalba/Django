@@ -1,0 +1,41 @@
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+
+    {% for dato in formulario %}
+        <label class="form-label">{{dato.label}}:</label>
+        
+        {% if dato.name == "descripcion"%}
+        <textarea class="form-control"
+                  name ="{{dato.name}}"
+                  placeholder="Ingresar {{dato.label}}..."
+                  rows="9">{{dato.value | default:'' }}</textarea>
+
+        {% else %}
+            {% if dato.name == "genero" %}
+                <textarea class="form-control"
+                        name ="{{dato.name}}"
+                        placeholder="Ingresar {{dato.label}}..."
+                        rows="3">{{dato.value | default:'' }}</textarea>
+            {% else %}
+                <input type="{{dato.field.widget.input_type}}"
+                    class="form-control"
+                    name ="{{dato.name}}"
+                    placeholder="Ingresar {{dato.label}}..."
+                    value="{{dato.value | default:'' }}">
+            {% endif %}
+        {% endif %}
+
+        <div class="col-12 help-text mb-3">
+            {{dato.errors}}
+        </div>
+    {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <input class="btn btn-success m-1" type="submit" value="Confirmar">
+                <a href="{% url 'inicio' %}" class="btn btn-danger m-1">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
