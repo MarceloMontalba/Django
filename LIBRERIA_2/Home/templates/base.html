@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="cabecera text-center">  
+                    <span>libroteca</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <!--Barra control-->
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-sm-11 p-0">
+                <nav class="navbar navbar-expand navbar-dark d-flex justify-content-center p-0">
+                        <ul class="navbar-nav p-0">
+                            <li class="nav-item d-flex justify-content-center bg-dark">
+                                <a class="nav-link item item-menu p-3 w-100 {% if request.path == '/' %}activo{% endif %}" 
+                                   href="{% url 'inicio' %}"
+                                >
+                                    <i class="fa-sharp fa-solid fa-house"></i> Inicio
+                                </a>
+                            </li>
+
+                            <li class="nav-item d-flex justify-content-center bg-dark">
+                                <a class="nav-link item item-menu p-3 w-100 {% if request.path|slice:'0:8' == '/libros/' %}activo{% endif %}" 
+                                   href="{% url 'libros' %}"
+                                >
+                                    <i class="fas fa-book"></i> Libros
+                                </a>
+                            </li>
+
+                            <li class="nav-item d-flex justify-content-center bg-dark">
+                                <a class="nav-link item item-menu p-3 w-100 {% if request.path == '/carrito/' %}activo{% endif %}" 
+                                   href="{% url 'carrito' %}">
+                                    <i class="fas fa-shopping-cart"></i> Carrito
+                                </a>
+                            </li>
+                        </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {% block contenido %} {% endblock %}
+
+    <!-- Footer -->
+    <div class="container-fluid">
+        <div class="row pt-5 pb-5 d-flex justify-content-center">
+            <div class="col-12">
+                <footer class="text-center text-lg-start text-white mi-footer">
+                    <section class="d-flex justify-content-lg-between p-4 border-bottom">
+                        <div class="me-5 d-none d-lg-block">
+                            <span>Encuentranos en las siguientes redes sociales:</span>
+                        </div>
+                        <div>
+                            <a href="https://es-la.facebook.com/" class="me-4 text-reset">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/?lang=es" class="me-4 text-reset">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.google.com/?gws_rd=ssl" class="me-4 text-reset">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" class="me-4 text-reset">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://cl.linkedin.com/" class="me-4 text-reset">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/" class="me-4 text-reset">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </section>
+                
+                    <!-- Seccion Links  -->
+                    <section>
+                        <div class="container text-center text-md-start mt-5">
+                            <div class="row mt-3">
+                                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+                                    <h6 class="text-uppercase fw-bold mb-4">
+                                        <i class="fas fa-book me-3"></i> libroteca
+                                    </h6>
+                                    <p>
+                                        Aquí encontrarás libros de la mejor calidad y al mejor precio.
+                                        En nuestra basta selección de productos tendrás la oportunidad
+                                        de adquirir un objeto unico y sin igual.
+                                    </p>
+                                </div>
+                
+                                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                    <h6 class="text-uppercase fw-bold mb-4">
+                                        sucursales
+                                    </h6>
+                                    <p>
+                                        <span>Temuco</span>
+                                    </p>
+                                    <p>
+                                        <span>Santiago</span>
+                                    </p>
+                                    <p>
+                                        <span>Antofagasta</span>
+                                    </p>
+                                </div>
+                
+                                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
+                
+                                    <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+                
+                                    <p><i class="fas fa-home me-3"></i> Temuco, Calle Falsa #123, CH</p>
+                                    <p>
+                                        <i class="fas fa-envelope me-3"></i>
+                                        libroteca@correofalso.com
+                                    </p>
+                                    <p><i class="fas fa-phone me-3"></i> + 569 1234 1234</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                    <!-- Copyright -->
+                    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2022 Copyright:
+                    <a class="text-reset fw-bold" href="#">libroteca.com</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'scripts/diseño.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+body{
+    background: url("../img/fondo.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.cabecera {
+    color: white;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+    font-family: 'Raleway';
+  }
+
+.item:hover{
+    color: white !important;
+}
+
+.mi-footer{
+    background: rgb(11, 79, 75) !important;
+}
+
+.tarjeta{
+    position: relative
+}
+
+.tarjeta:hover{
+    cursor: pointer !important;
+}
+
+.titulo-tarjeta{
+    background: rgb(11, 79, 75) !important;
+}
+
+.tarjeta-descripcion{
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 13px;
+    background-color: rgba(0,0,0,0.9);
+    width: 100%;
+    visibility: hidden;
+    z-index: 3;
+}
+
+.tarjeta-precio{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.9);
+    padding: 7px;
+    z-index: 2
+}
+
+.etiqueta-categoria{
+    background-color: rgb(51, 51, 54);
+    color: rgb(190, 196, 193);
+    text-decoration: none;
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 10px;
+    display:inline-block;
+}
+
+.etiqueta-categoria:hover{
+    background: rgb(4, 117, 110) !important;
+    color: rgb(235, 240, 236) !important;
+    text-decoration: none;
+}
+
+.item-menu:hover{
+    background-color: rgb(214, 184, 11) !important;
+}
+
+.activo{
+    background-color: rgb(189, 162, 9) !important;
+    color: white !important;
+}
+
+.categoria-activa{
+    background-color: rgb(11, 79, 75);
+    color: white;
+}
+
+.titulo-logueado{
+    background: rgb(11, 79, 75); 
+    font-size: 19px; 
+    text-align: center;
+    font-family: 'Raleway';
+    text-transform: uppercase;
+}

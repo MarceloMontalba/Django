@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %} Lista de Libros {% endblock %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+
+            <!--Barra de busqueda-->
+            <form action="{% url 'libros' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-10 p-1 mb-1">
+                        <div class="input-group input-group-sm">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>
+                            </div>
+    
+                            <input type="text" class="form-control" 
+                                placeholder="Ingresar nombre del libro..."
+                                name="buscador-libro"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-1 p-1">
+                        <input type="submit" class="btn btn-sm btn-warning" value="Buscar" />
+                    </div>
+                </div>
+            </form>
+            
+            <!--Etiquetas de categoria-->
+            <div class="container col-10" style="text-align: center;">
+                {% for genero in categorias %}
+                    <a href="{% url 'libros_categoria' genero.id %}" t
+                       class="etiqueta-categoria 
+                            {% if request.path|slice:'7:18' == '/categoria/' and request.path|slice:'18:19' == genero.id|stringformat:'i' %}
+                            categoria-activa{% endif %}"
+                    >
+                        {{genero.nombre}}
+                        {{url_categoria}}
+                    </a>
+                {% endfor %}
+            </div>
+
+            <!--Contenedor de tarjetas-->
+            <div class="col-11 m-3 container">
+                <div class="row d-flex justify-content-center">
+
+                    {% for libro in libros %}
+                        <div class="col-md-5 col-lg-4 col-11 p-3 d-flex justify-content-center">
+                            <!--Tarteja con informacion del libro -->
+                            <a href="{% url 'libro_detalles' libro.id %}" 
+                               style="margin: 0; padding: 0;" 
+                               class="h-100 w-100 d-flex justify-content-center"
+                            >
+                                <div class="card text-white bg-dark mb-3 tarjeta h-100 w-100" 
+                                    style="max-width: 18rem;" 
+                                    onmouseover="mostrarDetalles('tarjeta-detalles-{{libro.id}}')"
+                                    onmouseleave="ocultarDetalles('tarjeta-detalles-{{libro.id}}')"
+                                >
+                                    <div class="card-header titulo-tarjeta" style="font-size: 14px">
+                                        <span>{{libro.nombre}}</span>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="card-body p-1 d-flex justify-content-center align-items-center">
+                                            <img src="{{libro.portada.url}}" width="150" height="230">
+                                        </div>
+                                    </div>
+
+                                    <div class="tarjeta-descripcion h-100" id="tarjeta-detalles-{{libro.id}}">
+                                        {{libro.autor.nombre}}<br>
+
+                                        {% for categoria in libro.categoria.all %}
+                                            <small style="color: #e3dede">{{categoria.nombre}},</small>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="tarjeta-precio d-flex justify-content-center pt-2 pb-2">
+                                        Valor : ${{libro.precio}}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

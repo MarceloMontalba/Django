@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalles{% endblock %}
+
+{% block contenido %}
+    <div class="container mt-5 p-0">
+        <div class="row d-flex justify-content-center">
+            <div class="col-10 p-0">
+
+                <div class="container-fluid">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12 col-md-9 col-lg-6 col-xl-5 p-0">
+                            <img src="{{ libro.portada.url }}" class="w-100 h-100">
+                        </div>
+
+                        <div class="col-12 col-md-9 col-lg-6 col-xl-7 bg-light p-5 w-100" 
+                        style="font-size: 14px;">
+
+                            <h3>{{libro.nombre}}</h3>
+                            <h6 class="mb-2" style="color: rgb(173, 17, 36)">{{libro.autor}}</h6>
+
+
+                            <!--Contenedor compra-->
+                            <div class="container-fluid">
+                                <div class="row d-flex align-items-center">
+                                    <!--Etiqueta precio-->
+                                    <div class="col-12 col-xl-3" style="text-align:center;">
+                                        <h3 class="mt-4">${{libro.precio}}</h3>
+                                    </div>
+
+                                    <!--Tarjeta de compra -->
+                                    <div class="col-12 col-xl-9 mb-3">
+                                        <div class="card">
+                                            <div class="card-header text-white p-3" style="background: rgb(11, 79, 75);">
+                                                Comprar Libro
+                                            </div>
+
+                                            <div class="card-body pb-0">
+                                                <form method="POST" action="{% url 'libro_detalles' libro.id %}"
+                                                       class="form-group row d-flex align-items-center justify-content-center">
+                                                    {% csrf_token %}
+                                                    <label for="inputPassword" class="col-6 col-sm-4 col-form-label">Cantidad:</label>
+                                                    <div class="col-6 col-lg-5 col-xl-3 pl-0">
+                                                        <select name="cantidad_libros" class="form-control form-control-sm">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <input type="submit" class="btn btn-sm btn-danger" value="Agregar"></input>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <b>Sinopsis</b>
+                            <p class="mb-3">
+                                {{libro.descripcion}}
+                            </p>
+
+                            <p>
+                                <b>Categoria:</b> 
+                                {% for categoria in libro.categoria.all %}
+                                    {{categoria.nombre}},
+                                {% endfor %}
+                            </p> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-9 col-sm-8 col-md-6 col-lg-5 container mt-5">
+                <div class="card">
+                    <div class="card-header text-white" style="background: rgb(11, 79, 75);">
+                        Stock en tiendas
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table" style="text-align: center;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Sucursal</th>
+                                    <th>Número Unidades</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for stock in stocks %}
+                                    <tr>
+                                        <td>{{stock.sucursal}}</td>
+                                        <td>{{stock.numero_unidades}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}

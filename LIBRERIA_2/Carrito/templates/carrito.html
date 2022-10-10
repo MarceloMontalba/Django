@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Carrito de Compras{% endblock %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+
+            {% for articulo in carrito %}
+                <div class="col-9 container-fluid mb-4">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-8 col-md-4 col-lg-2 p-0">
+                            <img src="{{articulo.libro.portada.url}}" class="w-100 h-100">
+                        </div>
+
+                        <div class="col-12 col-md-7 col-lg-5 bg-light p-4" style="font-size: 18px;">
+                            <a href="{% url 'eliminar_articulo' articulo.id %}" style="color:red; font-size: 18px;text-decoration: none;" class="d-flex justify-content-end">
+                                <i class="fa-sharp fa-solid fa-xmark"></i>
+                            </a>
+                            <h5>{{articulo.libro.nombre}}</h5>
+                            <h6 style="color:rgb(173, 17, 36)">{{articulo.libro.autor}}</h6>
+
+                            <div class="container col-12">
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        Precio :
+                                    </div>
+
+                                    <div class="col-6">
+                                        ${{articulo.libro.precio}} <b>X{{articulo.cantidad}}</b>
+                                    </div>
+                                </div>
+
+                                <div class="row text-white" style="background: rgb(173, 17, 36);">
+                                    <div class="col-6">
+                                        Subtotal :
+                                    </div>
+
+                                    <div class="col-6">
+                                        ${{articulo.total}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

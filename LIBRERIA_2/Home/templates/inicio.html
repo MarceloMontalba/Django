@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+    <div class="container pt-5">
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-10">
+                <div class="card mb-3 text-white bg-dark">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/inicio1.png' %}" class="img-fluid rounded-start h-100" alt="...">
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">80% de descuento</h5>
+                            <p class="card-text">
+                                Comprá 80% De Descuento en cuotas sin interés! Conocé nuestras increíbles ofertas 
+                                y promociones en millones de productos.                    
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Actualizado el 25/03/2022
+                                </small>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="card mb-3 text-white bg-dark">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/inicio2.png' %}" class="img-fluid rounded-start h-100" alt="...">
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">Envio gratis a domicilio</h5>
+                            <p class="card-text">
+                                Recibe tus pedidos gratis a partir de $15.990! 
+                                Miles de productos con envío gratis. Llegamos a 74 
+                                comunas de Chile sin costo de envío.                  
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Actualizado el 03/07/2022
+                                </small>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="card mb-3 text-white bg-dark">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/inicio3.png' %}" class="img-fluid rounded-start h-100" alt="...">
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">Beneficios de la lectura</h5>
+                            <p class="card-text">
+                                <ul>
+                                    <li>Aumenta nuestra inteligencia emocional.</li>
+                                    <li>Mejora nuestro vocabulario.</li>
+                                    <li>Potencia nuestra cultura general.</li>
+                                    <li>Hace que usemos la imaginación.</li>    
+                                </ul>        
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Actualizado el dia de ayer
+                                </small>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
