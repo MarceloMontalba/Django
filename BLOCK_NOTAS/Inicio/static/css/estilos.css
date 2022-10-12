@@ -1,0 +1,63 @@
+body{
+    background: url("../img/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: PlayfairDisplay;
+    src: url("../tipografias/PlayfairDisplay/PlayfairDisplaySC-Black.ttf");
+}
+
+@font-face {
+    font-family: PTSansNarrowBold;
+    src: url("../tipografias/PTSansNarrow/PTSansNarrow-Bold.ttf");
+}
+
+@font-face{
+    font-family: PTSansNarrow;
+    src: url("../tipografias/PTSansNarrow/PTSansNarrow-Regular.ttf")
+}
+
+.titulo-menu{
+    color: white;
+    font-family: PlayfairDisplay;
+    font-size: 25px;
+}
+
+.titulo-nota{
+    font-family: PTSansNarrowBold;
+    font-size: 18px
+}
+
+.contenido-nota{
+    font-family: PTSansNarrow;
+    font-size: 13px;
+}
+
+.contenido-menu{
+    background: #363434;
+}
+
+.tarjeta{
+    color: white;
+    background: #b05704;
+    box-shadow: 10px 5px 5px black;
+    cursor: pointer;
+}
+
+.tarjeta:hover{
+    background: #9c4c02;
+}
+
+.icono-cerrar{
+    color: #ad0207;
+    text-decoration: none
+}
+
+.icono-cerrar:hover{
+    color: #8f0106
+}

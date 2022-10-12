@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Block de notas{% endblock %}
+
+{% block contenido %}
+    <div class="container p-3">
+        <div class="row">
+            <div class="col-12 container">
+                <form method="POST" class="row d-flex justify-content-center">
+                    {% csrf_token %}
+                    <div class="col-8">
+                        <input type="text" class="form-control form-control-sm" placeholder="Buscar nota" name="buscador">
+                    </div>
+
+                    <input type="submit" value="Buscar" class="btn btn-sm btn-warning">
+                </form>
+            </div>
+
+            <div class="col-12 mt-4 d-flex justify-content-end">
+                <a href="{% url 'agregar-nota' %}" class="btn btn-sm btn-success">
+                    <i class="fas fa-plus"></i> Agregar Nota
+                </a>
+            </div>
+
+            <div class="m-0 p-0 container mt-4" style="height: 300px; overflow-y: auto;">
+                {% for nota in notas %}
+                    <a href="{% url 'detalles' nota.id %}" style="text-decoration: none;">
+                        <div class="col-12 tarjeta mb-3 p-2 pl-3">
+                            <h5 class="titulo-nota mb-0">{{nota.titulo}}</h5>
+                            <span class="contenido-nota">{{nota.actualizado}}</span>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+         </div>
+    </div>
+{% endblock %}
