@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranas Saltarinas</title>
+    <link rel="stylesheet" href="{% static 'css/pushy-buttons.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div class="contenedor">
+    <!--Contiene las imagenes de las piedras-->
+    <div class="contenedor-piedras">
+      {% for i in numero_objetos %}
+        <img src="{% static 'img/piedra.png' %}" class="piedra">
+      {% endfor %}
+    </div>
+
+    <!--Contiene las imagenes de las ranas-->
+    <div class="contenedor-ranas">
+      {% for i in numero_objetos %}
+        {% if i < 3 %}
+          <img src="{% static 'img/rana_1.png' %}" id="{{i}}" class="rana">
+        {% elif i == 3 %}
+          <img src="{% static 'img/rana_1.png' %}" id="{{i}}" class="rana" style="visibility: hidden">
+        {% elif i > 3 %}
+          <img src="{% static 'img/rana_2.png' %}" id="{{i}}" class="rana">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  
+  <!--Contiene el boton de reseteo de juego-->
+  <div class="recarga">
+    <img src="{% static 'img/recarga.png' %}" width="50px">
+  </div>
+
+  <div class="contenedor-ganador">
+    <img src="{% static 'img/ganador.png' %}" width="500px">
+    <br>
+    <button class="pushy__btn pushy__btn--sm btn-recargar">Volver a jugar</button>
+  </div>
+  
+  <!--Audio de fondo en ciclo-->
+  <audio id="sonido-fondo" loop autoplay> 
+    <source src="{% static 'sounds/ambiente.mp3' %}" type="audio/mp3">
+  </audio>
+</body>
+</html>
